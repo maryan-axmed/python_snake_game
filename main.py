@@ -20,6 +20,14 @@ def generate_starting_position():
     return [random.randrange(*position_range), random.randrange(*position_range)]
 
 
+# if the snake touches the boundary/border
+# the game needs to re-start
+def reset():
+    target.center = generate_starting_position()
+    snake_pixel.center = generate_starting_position()
+    return snake_pixel.copy()
+
+
 # generating pixels outside the screen
 def is_out_of_bounds():
     return snake_pixel.bottom > square_width or snake_pixel.top < 0 \
